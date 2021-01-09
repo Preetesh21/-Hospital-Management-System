@@ -2,6 +2,7 @@ const express=require('express')
 const app=new express();
 const cors=require('cors');
 const pool =require('./db');
+const bodyParser = require("body-parser");
 
 // Middleware Body Parser    
 app.use(express.json());
@@ -23,6 +24,10 @@ app.get('/hospital',async (req,res) =>{
 app.use('/admin', require('./routes/admin/admin'));
 
 app.use('/user', require('./routes/user/user'));
+
+app.use('/doctor', require('./routes/doctor/doctor'));
+
+app.use('/hospital', require('./routes/hospital/hospital'));
 
 const PORT = process.env.PORT || 3000;
 

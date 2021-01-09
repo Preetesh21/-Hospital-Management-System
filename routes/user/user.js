@@ -12,7 +12,7 @@ app.use(cors());
 app.post('/',async (req,res)=>{
     try{
         
-        const {email,password} = (req.query);
+        const {email,password} = (req.body);
         const query=await pool.query('INSERT INTO USERS(email,password) VALUES($1,$2) RETURNING *', [(email),(password)],
         (error, results) => {
             if (error) {
@@ -29,7 +29,7 @@ app.post('/',async (req,res)=>{
 
 app.get('',async (req,res) =>{
     //console.log(req);
-    const {email,password} = (req.query);
+    const {email,password} = (req.body);
     const query= await pool.query('SELECT * FROM USERS WHERE email=$1 and password=$2', [(email),(password)], (error, results) => {
     if (error) {
       throw error
