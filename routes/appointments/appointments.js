@@ -25,9 +25,10 @@ app.get('/',async (req,res)=>{
 })
 
 app.get('/:id&:date&:hr',async (req,res)=>{
-    const {id,date,hour}=req.params;
-    console.log(id);
-    const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE patient_id=$1 AND date=$2 AND hr=$3',[id,date,hour],(error,results)=>{
+    const {id,date,hr}=req.params;
+    console.log(id,date,hr);
+    console.log(req.params);
+    const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE patient_id=$1 AND date=$2 AND hr=$3',[id,date,hr],(error,results)=>{
         if(error){
             throw error;
         }
@@ -37,6 +38,35 @@ app.get('/:id&:date&:hr',async (req,res)=>{
         }
     })
 })
+
+app.get('/:id',async (req,res)=>{
+    const {id}=req.params;
+    console.log(id);
+    const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE patient_id=$1',[id],(error,results)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            console.log(results.rows);
+            res.json(results.rows);
+        }
+    })
+})
+
+app.get('/doctor/:id',async (req,res)=>{
+    const {id}=req.params;
+    console.log(id);
+    const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE doctor_id=$1',[id],(error,results)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            console.log(results.rows);
+            res.json(results.rows);
+        }
+    })
+})
+
 
 app.post('/:id',async (req,res)=>{
     const {id}=req.params;

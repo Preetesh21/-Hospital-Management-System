@@ -4,7 +4,7 @@ CREATE TABLE admin(admin_id SERIAL,email VARCHAR(255) NOT NULL,password VARCHAR(
 
 CREATE TABLE users(user_id SERIAL,email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL,primary key(user_id));
 
-CREATE TABLE patient(patient_id SERIAL,name VARCHAR(255) NOT NULL,age INT NOT NULL,gender VARCHAR(10),address VARCHAR(255) NOT NULL,disease VARCHAR(255) NOT NULL,contact VARCHAR(10) NOT NULL,arrival_date DATE NOT NULL,primary key(patient_id));
+CREATE TABLE patient(patient_id SERIAL,name VARCHAR(255) NOT NULL,age INT NOT NULL,gender VARCHAR(10),address VARCHAR(255) NOT NULL,disease VARCHAR(255) NOT NULL,room_number VARCHAR(255) NOT NULL,contact VARCHAR(10) NOT NULL,arrival_date DATE NOT NULL,primary key(patient_id));
 
 CREATE TABLE doctor(doctor_id SERIAL ,name VARCHAR(255) NOT NULL,age INT NOT NULL,gender VARCHAR(10) NOT NULL,tenure VARCHAR(255) NOT NULL,specialization VARCHAR(255) NOT NULL,available BOOLEAN NOT NULL,primary key(doctor_id));
 
@@ -12,7 +12,7 @@ CREATE TABLE hospital(rooms VARCHAR(255),pr BOOLEAN, available BOOLEAN);
 
 CREATE TABLE appointments(doctor_id SERIAL ,patient_id SERIAL ,date DATE NOT NULL,hr INT NOT NULL,foreign key(doctor_id) references doctor(doctor_id),foreign key(patient_id) references patient(patient_id),primary key(doctor_id,date,hr));
 
-CREATE TABLE leaflet_history(doctor_id SERIAL , patient_id SERIAL,disease VARCHAR(255) NOT NULL,cure VARCHAR(255) NOT NULL,room_number VARCHAR(255) NOT NULL,arrival_date DATE NOT NULL,foreign key(doctor_id) references doctor(doctor_id),foreign key(patient_id) references patient(patient_id),primary key(patient_id,arrival_date));
+CREATE TABLE leaflet_history(doctor_id SERIAL , patient_id SERIAL,date DATE NOT NULL,hr INT NOT NULL,disease VARCHAR(255) NOT NULL,cure VARCHAR(255) NOT NULL,room_number VARCHAR(255) NOT NULL,arrival_date DATE NOT NULL,foreign key(doctor_id,date,hr) references appointments(doctor_id,date,hr),foreign key(doctor_id) references doctor(doctor_id),foreign key(patient_id) references patient(patient_id),primary key(patient_id,doctor_id,date,hr));
 
 
 CREATE TABLE calender

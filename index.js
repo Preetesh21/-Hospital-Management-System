@@ -33,6 +33,8 @@ app.use('/patient', require('./routes/patient/patient'));
 
 app.use('/appointments', require('./routes/appointments/appointments'));
 
+app.use('/history', require('./routes/history/history'));
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Listening on ${PORT} number`));
