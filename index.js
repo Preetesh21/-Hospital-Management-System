@@ -19,6 +19,11 @@ app.get('/hospital',async (req,res) =>{
     }
 })
 
+// Setting up a route
+app.use('/admin', require('./routes/admin/admin'));
+
+app.use('/user', require('./routes/user/user'));
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Listening on ${PORT} number`));
