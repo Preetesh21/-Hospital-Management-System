@@ -29,6 +29,10 @@ app.use('/doctor', require('./routes/doctor/doctor'));
 
 app.use('/hospital', require('./routes/hospital/hospital'));
 
+app.use('/patient', require('./routes/patient/patient'));
+
+app.use('/appointments', require('./routes/appointments/appointments'));
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Listening on ${PORT} number`));

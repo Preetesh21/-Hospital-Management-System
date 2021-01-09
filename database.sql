@@ -1,5 +1,5 @@
 CREATE DATABASE hms;
-
+\connect hms;
 CREATE TABLE admin(admin_id SERIAL,email VARCHAR(255) NOT NULL,password VARCHAR(255) NOT NULL,primary key(admin_id));
 
 CREATE TABLE users(user_id SERIAL,email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL,primary key(user_id));

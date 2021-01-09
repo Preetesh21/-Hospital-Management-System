@@ -12,12 +12,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get('/',async (req,res)=>{
-    const query=pool.query("SELECT * FROM HOSPITAL",(error,results)=>{
+    console.log("hel");
+    const query=await pool.query("SELECT * FROM HOSPITAL",(error,results)=>{
         if(error){
             throw error;
         }
         else{
-            console.log("Showing the results");
+            console.log("Showing the results",results.row[0]);
             res.json(results.row);
         }
     })
@@ -25,7 +26,7 @@ app.get('/',async (req,res)=>{
 
 app.post('/:room_number',async(req,res)=>{
     const room_number=req.params.room_number;
-    let query=pool.query("SELECT available from HOSPITAL WHERE rooms=$1",[room_number],(error,results)=>{
+    let query=await pool.query("SELECT available from HOSPITAL WHERE rooms=$1",[room_number],(error,results)=>{
         if(error){
             throw error
         }
@@ -40,7 +41,7 @@ app.post('/:room_number',async(req,res)=>{
                 change=true;
             }
             console.log(change);
-            query=pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
+            query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
                 if(error){
                     throw error
                 }

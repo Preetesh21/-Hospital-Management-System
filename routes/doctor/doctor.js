@@ -13,7 +13,7 @@ app.use(cors());
 
 app.post('/',async (req,res)=>{
     try{
-        const {name,age,gender,tenure,specialization,available} = (req.body);
+        var {name,age,gender,tenure,specialization,available} = (req.body);
         console.log(name,age,gender,tenure,specialization,available);
         specialization=specialization.toUpperCase();
         const query=await pool.query('INSERT INTO DOCTOR(name,age,gender,tenure,specialization,available) VALUES($1,$2,$3,$4,$5,$6) RETURNING *', [name,age,gender,tenure,specialization,available],
