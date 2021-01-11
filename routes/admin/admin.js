@@ -33,7 +33,7 @@ app.get('',async (req,res) =>{
     if (error) {
       throw error
     }
-    if(results.row){
+    if(results.rows.length>0){
         console.log("Admin verified");
     }
     else{
@@ -43,5 +43,20 @@ app.get('',async (req,res) =>{
   })
 })
 
+app.get('/all',async (req,res) =>{
+    
+    const query= await pool.query('SELECT * FROM ADMIN', (error, results) => {
+    if (error) {
+      throw error
+    }
+    if(results.rows.length>0){
+        console.log("Admins shown");
+    }
+    else{
+        console.log("No admin exists");
+    }
+    res.json(results.rows)
+  })
+})
 
 module.exports = app;

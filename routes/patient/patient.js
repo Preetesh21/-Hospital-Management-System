@@ -14,25 +14,38 @@ app.use(cors());
 app.get('/',async (req,res)=>{
     const query=await pool.query('SELECT * FROM PATIENT',(error,results)=>{
         if(error){
-            throw error;
+            console.log(error.details);
+            res.send(error.details);
         }
         else{
-            console.log(results.rows);
-            res.json(results.rows);
+            if(results.rows.length>0){
+                console.log("Patients shown");
+                res.json(results.rows);
+            }
+            else{
+                console.log("No Patients exists");
+                res.json(results.rows)
+            }
         }
     })
 })
 
 app.get('/:id',async (req,res)=>{
     const {id}=req.params;
-    console.log(id);
     const query=await pool.query('SELECT * FROM PATIENT WHERE patient_id=$1',[id],(error,results)=>{
         if(error){
-            throw error;
+            console.log(error.details);
+            res.send(error.details);
         }
         else{
-            console.log(results.rows);
-            res.json(results.rows);
+            if(results.rows.length>0){
+                console.log("Patient with id shown");
+                res.json(results.rows);
+            }
+            else{
+                console.log("No Patients exists with that ID");
+                res.json(results.rows)
+            }
         }
     })
 })
@@ -45,7 +58,8 @@ app.post('/',async(req,res)=>{
     if(type=='Private'){
         const query=await pool.query('select * from hospital where pr=true and available=true',async(error,results)=>{
             if(error){
-                throw error;
+                console.log(error.details);
+                res.send(error.details);
             }
             else{
                 console.log("hello",results.rows,(results.rows.length));
@@ -56,13 +70,25 @@ app.post('/',async(req,res)=>{
                     ans= false;
                 }
                 if(ans){
-                    const query =await pool.query("INSERT INTO PATIENT(name,age,gender,address,disease,contact,arrival_date) VALUES($1,$2,$3,$4,$5,$6,$7)  RETURNING *",[name,age,gender,address,disease,contact,date],(error,results)=>{
+                    const room_number=results.rows[0].rooms;
+                    const query =await pool.query("INSERT INTO PATIENT(name,age,gender,address,disease,contact,arrival_date,room_number) VALUES($1,$2,$3,$4,$5,$6,$7,$8)  RETURNING *",[name,age,gender,address,disease,contact,date,room_number],async(error,results)=>{
                         if(error){
-                            throw error;
+                            console.log(error.details);
+                            res.send(error.details);
                         }
                         else{
                             console.log("Added Patient!")
                             res.json(results.rows);
+                            const change=false;
+                            const query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
+                                if(error){
+                                    throw error
+                                }
+                                else{
+                                    console.log("Updated!!");
+                                    //res.json(results.row);
+                                }
+                        });
                         }
                     })
                 }
@@ -75,7 +101,7 @@ app.post('/',async(req,res)=>{
     }
     else{
         console.log("Hell")
-        const query=await pool.query('select * from hospital where available=true',async(error,results)=>{
+        const query=await pool.query('select * from hospital where available=true and pr=false',async(error,results)=>{
             if(error){
                 throw error;
             }
@@ -89,13 +115,26 @@ app.post('/',async(req,res)=>{
                     ans= false;
                 }
                 if(ans){
-                    const query =await pool.query("INSERT INTO PATIENT(name,age,gender,address,disease,contact,arrival_date) VALUES($1,$2,$3,$4,$5,$6,$7)  RETURNING *",[name,age,gender,address,disease,contact,date],(error,results)=>{
+                    const room_number=results.rows[0].rooms;
+                    const query =await pool.query("INSERT INTO PATIENT(name,age,gender,address,disease,contact,arrival_date,room_number) VALUES($1,$2,$3,$4,$5,$6,$7,$8)  RETURNING *",[name,age,gender,address,disease,contact,date,room_number],async(error,results)=>{
                         if(error){
-                            throw error;
+                            console.log(error.details);
+                            res.send(error.details);
                         }
                         else{
-                            console.log(results,"Added Patient!")
+                            console.log("Added Patient!")
                             res.json(results);
+                            const change=false;
+                            const query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
+                                if(error){
+                                    console.log(error.details);
+                                    res.send(error.details);
+                                }
+                                else{
+                                    console.log("Updated!!");
+                                    //res.json(results.row);
+                                }
+                        });
                         }
                     })
                 }
@@ -112,6 +151,41 @@ app.post('/',async(req,res)=>{
    }
 });
 
-
+app.post("/leave/:id",async(req,res)=>{
+    const id=req.params.id;
+    const date=new Date().toLocaleDateString();
+    const query=pool.query("UPDATE PATIENT SET departure_date=$1 WHERE patient_id=$2",[date,id],async(error,results)=>{
+        if(error){
+            console.log(error);
+            res.send(error);
+        }
+        else{
+            console.log("Updated Patients details");
+            const query=pool.query("SELECT room_number FROM PATIENT WHERE patient_id=$1",[id],async(error,results)=>{
+                if(error){
+                    console.log('helllo',error.details);
+                    res.send(error.details);
+                }
+                else{
+                    const change=true;
+                    const room_number=results.rows[0].room_number;
+                    console.log(results.rows);
+                    const query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2 RETURNING *",[change,room_number],(error,results)=>{
+                        if(error){
+                            console.log('helo',error.details);
+                            res.send(error.details);
+                        }
+                        else{
+                            console.log("Updated!!");
+                            res.json(results.rows);
+                        }
+                })
+            }
+            })
+            
+            
+        }
+    })
+})
 
 module.exports=app;

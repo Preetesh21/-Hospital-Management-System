@@ -34,11 +34,27 @@ app.get('',async (req,res) =>{
     if (error) {
       throw error
     }
-    if(results.row){
+    if(results.rows.length>0){
         console.log("User verified");
     }
     else{
         console.log("No such user exists");
+    }
+    res.json(results.rows)
+  })
+})
+
+app.get('/all',async (req,res) =>{
+    
+    const query= await pool.query('SELECT * FROM USERS', (error, results) => {
+    if (error) {
+      throw error
+    }
+    if(results.rows.length>0){
+        console.log("Users shown");
+    }
+    else{
+        console.log("No user exists");
     }
     res.json(results.rows)
   })

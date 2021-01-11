@@ -12,26 +12,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get('/',async (req,res)=>{
-    console.log("hel");
     const query=await pool.query("SELECT * FROM HOSPITAL",(error,results)=>{
         if(error){
-            throw error;
+            console.log(error);
+            res.send(error);
         }
         else{
-            console.log("Showing the results",results.row[0]);
-            res.json(results.row);
+            console.log("Showing the results",results.rows[0]);
+            res.json(results.rows);
         }
     })
 })
 
 app.post('/:room_number',async(req,res)=>{
     const room_number=req.params.room_number;
+    console.log(room_number)
     let query=await pool.query("SELECT available from HOSPITAL WHERE rooms=$1",[room_number],(error,results)=>{
         if(error){
-            throw error
+            console.log(error);
+            res.send(error);
         }
         else{
-            console.log(results.rows[0].available);
+            console.log(results.rows[0]);
             let change;
             if(results.rows[0].available==true)
             {
@@ -41,13 +43,14 @@ app.post('/:room_number',async(req,res)=>{
                 change=true;
             }
             console.log(change);
-            query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
+            query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],async(error,results)=>{
                 if(error){
-                    throw error
+                    console.log(error);
+                    res.send(error);
                 }
                 else{
                     console.log("Updated!!");
-                    res.json(results.row);
+                    res.json(results.rows);
                 }
         });
     }
