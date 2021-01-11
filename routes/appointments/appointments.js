@@ -15,7 +15,8 @@ app.use(cors());
 app.get('/',async (req,res)=>{
     const query=await pool.query('SELECT * FROM APPOINTMENTS',(error,results)=>{
         if(error){
-            throw error;
+            console.log(error);
+            res.send(error);
         }
         else{
             console.log(results.rows);
@@ -30,7 +31,8 @@ app.get('/:id&:date&:hr',async (req,res)=>{
     console.log(req.params);
     const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE patient_id=$1 AND date=$2 AND hr=$3',[id,date,hr],(error,results)=>{
         if(error){
-            throw error;
+            console.log(error);
+            res.send(error);
         }
         else{
             console.log(results.rows);
@@ -44,7 +46,8 @@ app.get('/:id',async (req,res)=>{
     console.log(id);
     const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE patient_id=$1',[id],(error,results)=>{
         if(error){
-            throw error;
+            console.log(error);
+            res.send(error);
         }
         else{
             console.log(results.rows);
@@ -58,7 +61,8 @@ app.get('/doctor/:id',async (req,res)=>{
     console.log(id);
     const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE doctor_id=$1',[id],(error,results)=>{
         if(error){
-            throw error;
+            console.log(error);
+            res.send(error);
         }
         else{
             console.log(results.rows);
@@ -73,16 +77,15 @@ app.post('/:id',async (req,res)=>{
     const{doctor_id,date,hr}=(req.body);
     const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE doctor_id=$1 AND date=$2 AND hr=$3',[doctor_id,date,hr],async (error,results)=>{
         try{
-        if(error){
-            
-            res.json(error.detail);
+        if(error){     
+            res.json(error);
             console.log(error);
         }
         else{
             if(results.rows.length==0){
                 const query=await pool.query('INSERT INTO APPOINTMENTS(patient_id,doctor_id,date,hr) VALUES($1,$2,$3,$4) RETURNING *',[id,doctor_id,date,hr],(error,results)=>{
                     if(error){
-                        res.json(error.detail);
+                        res.json(error);
                         console.log(error);
                     }
                     else{
