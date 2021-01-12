@@ -1,13 +1,47 @@
 import React, { Component } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
+import classnames from 'classnames'
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export class Navber extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          prevScrollpos: window.pageYOffset,
+          visible: true
+        };
+      }
+    
+      // Adds an event listener when the component is mount.
+      componentDidMount() {
+        window.addEventListener("scroll", this.handleScroll);
+      }
+    
+      // Remove the event listener when the component is unmount.
+      componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
+      }
+    
+      // Hide or show the menu.
+      handleScroll = () => {
+        const { prevScrollpos } = this.state;
+    
+        const currentScrollPos = window.pageYOffset;
+        const visible = prevScrollpos > currentScrollPos;
+    
+        this.setState({
+          prevScrollpos: currentScrollPos,
+          visible
+        });
+      };
     render() {
         return (
             <div>
-              <Navbar className="navbar bg-inverse bg-dark text-white">
+              <Navbar className={classnames("navbar", {
+                    "navbar--hidden": !this.state.visible
+                  })} bg="dark" text="white" var expand="lg">
                 <Navbar.Brand style={{color:"white"}}>Lifescape Hospital Ltd</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

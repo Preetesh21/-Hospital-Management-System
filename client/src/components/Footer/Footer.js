@@ -22,12 +22,12 @@ class Footer extends Component {
 			</div>
 			<div className="col-md-4 footer-box">
 			  <p id="contact"><b>OUR ADDRESS</b></p>
-			  <p><i className="fa fa-map-marker"></i>Indian Institute of Technology Ropar, 140001, Rupnagar, Punjab, India</p>
-			  <p><i className="fa fa-phone"></i>0188 124 2105</p>
-			  <p><i className="fa fa-envelope-o"></i>director@iitrpr.ac.in</p>
+			  <p><i className="fa fa-map-marker"></i> Indian Institute of Technology Ropar, 140001, Rupnagar, Punjab, India</p>
+			  <p><i className="fa fa-phone"></i> 0188 124 2105</p>
+			  <p><i className="fa fa-envelope-o"></i> verma.preetesh21@gmail.com</p>
 			</div>
 			<div className="col-md-6 ">
-			  <p className="copyright">Copyright © 2019. All rights reserved | Designed by </p>
+			  <p className="copyright">Copyright © 2020. All rights reserved | Designed by </p>
 			</div>
 		  </div>
 		  </div>
