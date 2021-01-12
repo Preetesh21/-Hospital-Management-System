@@ -39,40 +39,40 @@ function App() {
   return (
     <div className="App">
     <Router>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/about" component={About} />
 
-      <Route path="/admin" component = {AdminLogin}/>
+      <Route exact path="/admin" component = {AdminLogin}/>
 
-      <Route path="/user" component = {UserLogin}/>
-      <Route path="/user/all" component = {UserAll}/>
-      <Route path="/user/add" component = {UserAdd}/>
+      <Route exact path="/user" component = {UserLogin}/>
+      <Route exact path="/user/all" component = {UserAll}/>
+      <Route exact path="/user/add" component = {UserAdd}/>
 
-      <Route path="/patient" component={PatientHome} />
-      <Route path="/patient/:id" component={PatientGet} />
-      <Route path="/patient/add" component={PatientAdd} />
-      <Route path="/patient/leave/:id" component={PatinetLeave} />
+      <Route exact path="/patient" component={PatientHome} />
+      <Route exact path="/patient/:id" component={PatientGet} />
+      <Route exact path="/patient/add" component={PatientAdd} />
+      <Route exact path="/patient/leave/:id" component={PatinetLeave} />
 
-      <Route path="/hospital" component={HospitalHome} />
-      <Route path="/hospital/:room_number" component={HospitalUpdate} />
+      <Route exact path="/hospital" component={HospitalHome} />
+      <Route exact path="/hospital/:room_number" component={HospitalUpdate} />
 
-      <Route path="/doctor" component = {DoctorHome} />
-      <Route path="/doctor/:id" component = {DoctorGet} />
-      <Route path="/doctor/find/:key" component = {DoctorFind} />
-      <Route path="/doctor/add" component = {DoctorAdd} />
-      <Route path="/doctor/update" component = {DoctorUpdate} />
+      <Route exact path="/doctor" component = {DoctorHome} />
+      <Route exact path="/doctor/:id" component = {DoctorGet} />
+      <Route exact path="/doctor/find/:key" component = {DoctorFind} />
+      <Route exact path="/doctor/add" component = {DoctorAdd} />
+      <Route exact path="/doctor/update" component = {DoctorUpdate} />
 
       
-      <Route path="/appointments" component = {AppointmentsHome} />
-      <Route path="/appointments/:id" component = {AppointmentsGet} />
-      <Route path="appointments/doctor/:id" component = {DoctorAppointments} />
-      <Route path="/appointments/add/:id" component = {AppointmentsAdd} />
+      <Route exact path="/appointments" component = {AppointmentsHome} />
+      <Route exact path="/appointments/:id" component = {AppointmentsGet} />
+      <Route exact path="appointments/doctor/:id" component = {DoctorAppointments} />
+      <Route exact path="/appointments/add/:id" component = {AppointmentsAdd} />
       
       
-      <Route path="/History/" component = {HistoryHome} />
-      <Route path="/History/:id" component = {HistoryGet} />
-      <Route path="/History/patient/:key" component = {HistoryPatient} />
-      <Route path="/History/add/:id" component = {HistoryAdd} />
+      <Route exact path="/History/" component = {HistoryHome} />
+      <Route exact path="/History/:id" component = {HistoryGet} />
+      <Route exact path="/History/patient/:key" component = {HistoryPatient} />
+      <Route exact path="/History/add/:id" component = {HistoryAdd} />
       
 
     </Router>
