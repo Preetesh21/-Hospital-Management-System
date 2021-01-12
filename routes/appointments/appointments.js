@@ -20,7 +20,7 @@ app.get('/',async (req,res)=>{
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -36,7 +36,7 @@ app.get('/:id&:date&:hr',async (req,res)=>{
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -51,7 +51,7 @@ app.get('/:id',async (req,res)=>{
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -66,7 +66,7 @@ app.get('/doctor/:id',async (req,res)=>{
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -78,25 +78,25 @@ app.post('/:id',async (req,res)=>{
     const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE doctor_id=$1 AND date=$2 AND hr=$3',[doctor_id,date,hr],async (error,results)=>{
         try{
         if(error){     
-            res.json(error);
+            res.send(error);
             console.log(error);
         }
         else{
             if(results.rows.length==0){
                 const query=await pool.query('INSERT INTO APPOINTMENTS(patient_id,doctor_id,date,hr) VALUES($1,$2,$3,$4) RETURNING *',[id,doctor_id,date,hr],(error,results)=>{
                     if(error){
-                        res.json(error);
+                        res.send(error);
                         console.log(error);
                     }
                     else{
                         console.log("Appointment Fixed!!");
-                        res.json(results.rows[0]);
+                        res.send(results.rows[0]);
                     }
                 });
             }
             else{
                 console.log("Doctor Ain't Free!!!");
-                res.json("Not Possible!");
+                res.send("Not Possible!");
             }
         }
     }

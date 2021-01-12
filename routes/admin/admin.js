@@ -18,7 +18,7 @@ app.post('/',async (req,res)=>{
                 console.log(error);
             }
             console.log("Admin added");
-            res.json(results)
+            res.send(results)
           });
     }
     catch(err){
@@ -39,7 +39,7 @@ app.get('',async (req,res) =>{
     else{
         console.log("No such admin exists");
     }
-    res.json(results.rows)
+    res.send(results.rows)
   })
 })
 
@@ -55,7 +55,7 @@ app.get('/all',async (req,res) =>{
     else{
         console.log("No admin exists");
     }
-    res.json(results.rows)
+    res.send(results.rows)
   })
 })
 

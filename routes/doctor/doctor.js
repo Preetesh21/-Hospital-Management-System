@@ -24,7 +24,7 @@ app.post('/',async (req,res)=>{
             }
             else{
             console.log("Doctor added");
-            res.json(results)
+            res.send(results)
             }
           });
     }
@@ -46,7 +46,7 @@ app.post('/update/:id',async (req,res)=>{
                 res.send(error);
             }
             console.log("Doctor updated!");
-            res.json(resultss)
+            res.send(results)
           });
     }
     catch(err){
@@ -69,7 +69,7 @@ app.get('/:id',async (req,res) =>{
     else{
         console.log("No Doctors at present exists with that id");
     }
-    res.json(results.rows)
+    res.send(results.rows)
   })
 })
 
@@ -88,7 +88,7 @@ app.get('/find/:key',async(req,res)=>{
           else{
               console.log("No Doctors at present exists with that specialization");
           }
-          res.json(results.rows)
+          res.send(results.rows)
         })
 })
 
@@ -106,7 +106,7 @@ app.get('/',async (req,res) =>{
     else{
         console.log("No Doctors at present exists");
     }
-    res.json(results.rows)
+    res.send(results.rows)
   })
 })
 

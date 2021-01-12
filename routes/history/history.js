@@ -19,7 +19,7 @@ app.get('/',async (req,res)=>{
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -35,7 +35,7 @@ app.get('/:id',async (req,res)=>{
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -45,11 +45,11 @@ app.get('/patient/:id',async(req,res)=>{
     const query=pool.query("SELECT * FROM LEAFLET_HISTORY WHERE patient_id=$1",[id],(error,results)=>{
         if(error){
             console.log(error);
-            res.json(error);
+            res.send(error);
         }
         else{
             console.log(results.rows);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -61,7 +61,7 @@ app.post("/:id",async(req,res)=>{
     const query=await pool.query('SELECT arrival_date from PATIENT where patient_id =$1',[patient_id],async(error,results)=>{
         if(error){
             console.log(error.detail)
-            res.json(error.detail);
+            res.send(error.detail);
         }
         else{
             console.log(results.rows);
@@ -70,11 +70,11 @@ app.post("/:id",async(req,res)=>{
             const query=await pool.query('INSERT INTO LEAFLET_HISTORY(patient_id,date,hr,doctor_id,disease,cure,room_number,arrival_date) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',[patient_id,date,hr,id,disease,cure,room_number,arrival_date],(error,results)=>{
                 if(error){
                     console.log(error.detail)
-                    res.json(error.detail);
+                    res.send(error.detail);
                 }
                 else{
                     console.log(results.rows);
-                    res.json(results.rows);
+                    res.send(results.rows);
                 }
             })
         }

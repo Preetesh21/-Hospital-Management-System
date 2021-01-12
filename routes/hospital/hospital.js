@@ -19,7 +19,7 @@ app.get('/',async (req,res)=>{
         }
         else{
             console.log("Showing the results",results.rows[0]);
-            res.json(results.rows);
+            res.send(results.rows);
         }
     })
 })
@@ -50,7 +50,7 @@ app.post('/:room_number',async(req,res)=>{
                 }
                 else{
                     console.log("Updated!!");
-                    res.json(results.rows);
+                    res.send(results.rows);
                 }
         });
     }

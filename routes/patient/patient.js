@@ -20,11 +20,11 @@ app.get('/',async (req,res)=>{
         else{
             if(results.rows.length>0){
                 console.log("Patients shown");
-                res.json(results.rows);
+                res.send(results.rows);
             }
             else{
                 console.log("No Patients exists");
-                res.json(results.rows)
+                res.send(results.rows)
             }
         }
     })
@@ -40,11 +40,11 @@ app.get('/:id',async (req,res)=>{
         else{
             if(results.rows.length>0){
                 console.log("Patient with id shown");
-                res.json(results.rows);
+                res.send(results.rows);
             }
             else{
                 console.log("No Patients exists with that ID");
-                res.json(results.rows)
+                res.send(results.rows)
             }
         }
     })
@@ -78,7 +78,7 @@ app.post('/',async(req,res)=>{
                         }
                         else{
                             console.log("Added Patient!")
-                            res.json(results.rows);
+                            res.send(results.rows);
                             const change=false;
                             const query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
                                 if(error){
@@ -86,7 +86,7 @@ app.post('/',async(req,res)=>{
                                 }
                                 else{
                                     console.log("Updated!!");
-                                    //res.json(results.row);
+                                    //res.send(results.row);
                                 }
                         });
                         }
@@ -94,7 +94,7 @@ app.post('/',async(req,res)=>{
                 }
                 else{
                     console.log("No rooms sorry!");
-                    res.json("No rooms");
+                    res.send("No rooms");
                 }
             }
         });
@@ -123,7 +123,7 @@ app.post('/',async(req,res)=>{
                         }
                         else{
                             console.log("Added Patient!")
-                            res.json(results);
+                            res.send(results);
                             const change=false;
                             const query= pool.query("UPDATE HOSPITAL SET available=$1 WHERE rooms=$2",[change,room_number],(error,results)=>{
                                 if(error){
@@ -132,7 +132,7 @@ app.post('/',async(req,res)=>{
                                 }
                                 else{
                                     console.log("Updated!!");
-                                    //res.json(results.row);
+                                    //res.send(results.row);
                                 }
                         });
                         }
@@ -140,7 +140,7 @@ app.post('/',async(req,res)=>{
                 }
                 else{
                     console.log("No rooms sorry!");
-                    res.json("No rooms");
+                    res.send("No rooms");
                 }
             }
     });
@@ -177,7 +177,7 @@ app.post("/leave/:id",async(req,res)=>{
                         }
                         else{
                             console.log("Updated!!");
-                            res.json(results.rows);
+                            res.send(results.rows);
                         }
                 })
             }
