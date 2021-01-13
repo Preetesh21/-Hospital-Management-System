@@ -49,6 +49,7 @@ export class Navber extends Component {
                     <Nav.Link className="text-white" href="/">Home</Nav.Link>
                     <Nav.Link className="text-white" href="/about">About</Nav.Link>
                     <Nav.Link className="text-white" href="/hospital">Hospital</Nav.Link>
+                    <Nav.Link className="text-white" href="/doctor">Our Doctors</Nav.Link>
                     <NavDropdown title="Login" id="basic-nav-dropdown" className="mr-5">
                         <NavDropdown.Item href="/patient/login">Patient Login</NavDropdown.Item>
                         <NavDropdown.Item href="/doctors/login">Doctor Login</NavDropdown.Item>
