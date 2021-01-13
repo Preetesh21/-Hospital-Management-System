@@ -10,7 +10,7 @@ CREATE TABLE doctor(doctor_id SERIAL ,name VARCHAR(255) NOT NULL,age INT NOT NUL
 
 CREATE TABLE hospital(rooms VARCHAR(255),pr BOOLEAN, available BOOLEAN);
 
-CREATE TABLE appointments(doctor_id SERIAL ,patient_id SERIAL ,date DATE NOT NULL,hr INT NOT NULL,foreign key(doctor_id) references doctor(doctor_id),foreign key(patient_id) references patient(patient_id),primary key(doctor_id,date,hr));
+CREATE TABLE appointments(doctor_id SERIAL,doctor_name VARCHAR(255) ,patient_id SERIAL,patient_name VARCHAR(255) ,date DATE NOT NULL,hr INT NOT NULL,foreign key(doctor_id) references doctor(doctor_id),foreign key(patient_id) references patient(patient_id),primary key(doctor_id,date,hr));
 
 CREATE TABLE leaflet_history(doctor_id SERIAL , patient_id SERIAL,date DATE NOT NULL,hr INT NOT NULL,disease VARCHAR(255) NOT NULL,cure VARCHAR(255) NOT NULL,room_number VARCHAR(255) NOT NULL,arrival_date DATE NOT NULL,foreign key(doctor_id,date,hr) references appointments(doctor_id,date,hr),foreign key(doctor_id) references doctor(doctor_id),foreign key(patient_id) references patient(patient_id),primary key(patient_id,doctor_id,date,hr));
 

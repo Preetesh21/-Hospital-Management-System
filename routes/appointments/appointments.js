@@ -83,15 +83,37 @@ app.post('/:id',async (req,res)=>{
         }
         else{
             if(results.rows.length==0){
-                const query=await pool.query('INSERT INTO APPOINTMENTS(patient_id,doctor_id,date,hr) VALUES($1,$2,$3,$4) RETURNING *',[id,doctor_id,date,hr],(error,results)=>{
-                    if(error){
-                        res.send(error);
-                        console.log(error);
-                    }
-                    else{
-                        console.log("Appointment Fixed!!");
-                        res.send(results.rows[0]);
-                    }
+                const query=await pool.query('select name from doctor where doctor_id=$1',[doctor_id],async(error,results)=>{
+                        if(error){
+                            console.log(error);
+                            res.json(error);
+                        }
+                        else{
+                            const doc_name=results.rows[0].name;
+                            console.log(doc_name,results.rows)
+                            const query=await pool.query('select name from patient where patient_id=$1',[id],async(error,results)=>{
+                                    if(error){
+                                        console.log(error);
+                                        res.json(error);
+                                    }
+                                    else{
+                                        const pat_name=results.rows[0].name;
+                                        console.log(pat_name,results.rows)
+                                        const query=await pool.query('INSERT INTO APPOINTMENTS(patient_id,doctor_id,date,hr,doctor_name,patient_name) VALUES($1,$2,$3,$4,$5,$6) RETURNING *',[id,doctor_id,date,hr,doc_name,pat_name],async(error,results)=>{
+                                            if(error){
+                                                res.send(error);
+                                                console.log(error);
+                                            }
+                                            else{
+                                                console.log("Appointment Fixed!!");
+                                                res.send(results.rows[0]);
+                                            }
+                                        });
+                                    }
+                                
+                            });
+                        }
+                    
                 });
             }
             else{

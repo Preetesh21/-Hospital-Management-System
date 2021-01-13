@@ -42,8 +42,8 @@ function AppointmentsHome() {
             </div>
             <div className="row d-flex justify-content-between mx-2 px-3 card-strip">
                 <div className="left d-flex flex-column">
-                    <h5 className="mb-1">Patient :::{todo.patient_id}</h5>
-                    <p className="text-muted mb-1 sm-text">Doctor:::{todo.doctor_id}</p>
+                    <h5 className="mb-1">Patient :::{todo.patient_name}</h5>
+                    <p className="text-muted mb-1 sm-text">Doctor:::{todo.doctor_name}</p>
                 </div>
                 <div className="right d-flex">
                     <div className="fa fa-comment-o"></div>
