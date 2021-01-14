@@ -24,6 +24,7 @@ function AppointmentsGet() {
     return (
         <>
         <Navber />
+        <h1>cfvgbhjinok</h1>
         <Footer />
         </>
     )

@@ -25,10 +25,10 @@ app.get('/',async (req,res)=>{
     })
 })
 
-app.get('/:id&:date&:hr',async (req,res)=>{
+app.get('/one/:id&:date&:hr',async (req,res)=>{
     const {id,date,hr}=req.params;
     console.log(id,date,hr);
-    console.log(req.params);
+    //console.log(req.params);
     const query=await pool.query('SELECT * FROM APPOINTMENTS WHERE patient_id=$1 AND date=$2 AND hr=$3',[id,date,hr],(error,results)=>{
         if(error){
             console.log(error);

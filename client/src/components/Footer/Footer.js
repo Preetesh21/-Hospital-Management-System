@@ -1,8 +1,30 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
+
 class Footer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {value: ''};
+	
+		this.handleChange = this.handleChange.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+	  }
+	
+	  handleChange(event) {
+		this.setState({value: event.target.value});
+	  }
+	  handleClick(e){
+		e.preventDefault();
+		let path=`/doctor/find/${this.state.value}`;
+		console.log(path)
+		this.props.history.push(path);
+	  }
+
+
     render() { 
         return (  
             <> 
+			<footer>
         <div className=" bg-dark text-white">
         <div className="container">
 		  <div className="row">
@@ -15,8 +37,9 @@ class Footer extends Component {
 			</div>
 			<div className="col-md-4 footer-box">
             <p id="contact"><b>OUR LINKS</b></p>
-                <p>bnj
-                </p>
+			<input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" name="keyword" placeholder="keyword" />
+				<button className="btn btn-primary" onClick={this.handleClick}>Search</button>
+			
                 <p>bnj
                 </p>
 			</div>
@@ -32,8 +55,9 @@ class Footer extends Component {
 		  </div>
 		  </div>
 		</div>
+		</footer>
         </>
         );
     }
 }
-export default Footer
+export default withRouter(Footer)

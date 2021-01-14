@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './components/Home/Home';
@@ -27,6 +28,7 @@ import DoctorFind from './components/Doctor/DoctorFind';
 
 import AppointmentsHome from './components/Appointments/AppointmentsHome';
 import AppointmentsGet from './components/Appointments/AppointmentsGet';
+import AppointmentsOne from './components/Appointments/AppointmentsOne';
 import AppointmentsAdd from './components/Appointments/AppointmentsAdd';
 import DoctorAppointments from './components/Appointments/DoctorAppointments';
 
@@ -39,6 +41,7 @@ function App() {
   return (
     <div className="App">
     <Router>
+    <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
 
@@ -64,8 +67,9 @@ function App() {
 
       
       <Route exact path="/appointments" component = {AppointmentsHome} />
+      <Route exact path="/appointments/one/:id&:date&:hr" component = {AppointmentsOne} />
       <Route exact path="/appointments/:id" component = {AppointmentsGet} />
-      <Route exact path="appointments/doctor/:id" component = {DoctorAppointments} />
+      <Route exact path="/appointments/doctor/:id" component = {DoctorAppointments} />
       <Route exact path="/appointments/add/:id" component = {AppointmentsAdd} />
       
       
@@ -74,7 +78,7 @@ function App() {
       <Route exact path="/History/patient/:key" component = {HistoryPatient} />
       <Route exact path="/History/add/:id" component = {HistoryAdd} />
       
-
+</Switch>
     </Router>
     </div>
   );

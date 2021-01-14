@@ -1,6 +1,7 @@
 import React,{Fragment,useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 function DoctorGet() {
   const [todos, setTodos] = useState([]);
@@ -33,10 +34,12 @@ function DoctorGet() {
       <b>
         <h5 className="card-title">Name::{todo.name}</h5>
         <p className="card-text">Field:{todo.specialization}</p>
-        <p className="card-text">Gender:{todo.gender}</p>
-        <p className="card-text">Age:{todo.age}</p>
+        {/* <p className="card-text">Gender:{todo.gender}</p>
+        <p className="card-text">Age:{todo.age}</p> */}
         <p className="card-text">Tenure:{todo.tenure}</p>
         <p className="card-text">Available:{todo.available.toString()}</p></b>
+        <Link to={{
+                  pathname: `/doctor/${todo.doctor_id}`}}>Check us </Link>
       </div>
     </div>
   </div>
