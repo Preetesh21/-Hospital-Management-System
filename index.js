@@ -1,4 +1,5 @@
-const express=require('express')
+require('dotenv').config();
+const express=require('express');
 const app=new express();
 const cors=require('cors');
 const pool =require('./db');
@@ -35,6 +36,6 @@ app.use('/appointments', require('./routes/appointments/appointments'));
 
 app.use('/history', require('./routes/history/history'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`Listening on ${PORT} number`));
