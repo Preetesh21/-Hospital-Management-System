@@ -3,7 +3,7 @@ import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
-function DoctorGet() {
+function DoctorHome() {
   const [todos, setTodos] = useState([]);
     const getTodos = async () => {
         try {
@@ -52,4 +52,4 @@ function DoctorGet() {
     )
 }
 
-export default DoctorGet
+export default DoctorHome
