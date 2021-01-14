@@ -74,8 +74,8 @@ function App() {
       
       
       <Route exact path="/History/" component = {HistoryHome} />
-      <Route exact path="/History/:id" component = {HistoryGet} />
-      <Route exact path="/History/patient/:key" component = {HistoryPatient} />
+      <Route exact path="/History/:id&:doctor_id&:date&:hr" component = {HistoryGet} />
+      <Route exact path="/History/patient/:id" component = {HistoryPatient} />
       <Route exact path="/History/add/:id" component = {HistoryAdd} />
       
 </Switch>

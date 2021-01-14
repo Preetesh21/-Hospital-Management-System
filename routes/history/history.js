@@ -24,9 +24,8 @@ app.get('/',async (req,res)=>{
     })
 })
 
-app.get('/:id',async (req,res)=>{
-    const {id}=req.params;
-    const {doctor_id,date,hr}=req.body;
+app.get('/:id&:doctor_id&:date&:hr',async (req,res)=>{
+    const {id,doctor_id,date,hr}=req.params;
     console.log(id,doctor_id,date,hr);
     const query=await pool.query('SELECT * FROM LEAFLET_HISTORY WHERE patient_id=$1 AND date=$2 AND hr=$3 AND doctor_id=$4',[id,date,hr,doctor_id],(error,results)=>{
         if(error){
