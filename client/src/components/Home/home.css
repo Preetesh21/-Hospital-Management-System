@@ -1,0 +1,24 @@
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: linear-gradient(to bottom, #6e529d 0%,#d97b93 100%) ;
+}
+#home-main-container {
+  border: 1px solid rgba(255,255,255,.1);
+  
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%,rgba(0,0,0,0.05) 100%); 
+}
+
+#try {
+ 
+    width: 100% !important;
+    height: auto;
+    margin: auto;
+    display: block;
+  
+}
