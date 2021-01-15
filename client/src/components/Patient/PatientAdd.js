@@ -35,8 +35,10 @@ function PatientAdd(props) {
 
     return (
         <>
-        <h1>fyvgbuhinjm</h1>
+        <Navber />
+        
         <div className="container">
+        <h1>Patient Form</h1>
          <form>
         <div className="form-group">
             <label >Name</label>
@@ -71,6 +73,7 @@ function PatientAdd(props) {
         <button type="submit" onClick={handleClick} className="btn btn-primary">Submit</button>
         </form>   
         </div>
+        <Footer />
         </>
     )
 }

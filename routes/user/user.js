@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
-app.post('/',async (req,res)=>{
+app.post('/add',async (req,res)=>{
     try{
         
         const {email,password} = (req.body);
@@ -27,7 +27,7 @@ app.post('/',async (req,res)=>{
     }
 });
 
-app.get('',async (req,res) =>{
+app.post('/',async (req,res) =>{
     //console.log(req);
     const {email,password} = (req.body);
     const query= await pool.query('SELECT * FROM USERS WHERE email=$1 and password=$2', [(email),(password)], (error, results) => {
