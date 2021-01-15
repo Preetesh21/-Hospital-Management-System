@@ -52,8 +52,8 @@ function App() {
       <Route exact path="/user/add" component = {UserAdd}/>
 
       <Route exact path="/patient" component={PatientHome} />
-      <Route exact path="/patient/:id" component={PatientGet} />
       <Route exact path="/patient/add" component={PatientAdd} />
+      <Route exact path="/patient/:id" component={PatientGet} />  
       <Route exact path="/patient/leave/:id" component={PatinetLeave} />
 
       <Route exact path="/hospital" component={HospitalHome} />

@@ -1,6 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Footer from '../Footer/Footer';
-import Navber from '../Navbar/Navbar';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
   

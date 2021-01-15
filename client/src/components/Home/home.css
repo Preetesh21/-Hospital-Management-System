@@ -4,9 +4,10 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: #d97b93 ;
 }
 body {
-  background: linear-gradient(to bottom, #6e529d 0%,#d97b93 100%) ;
+  background: linear-gradient(to bottom, #6e529d 0%,#d97b93 100%) no-repeat;
 }
 #home-main-container {
   border: 1px solid rgba(255,255,255,.1);

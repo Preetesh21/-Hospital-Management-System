@@ -53,7 +53,7 @@ app.get('/:id',async (req,res)=>{
 app.post('/',async(req,res)=>{
    try{
     const {name,age,gender,address,disease,contact,type}=(req.body);
-    const date=new Date().toLocaleDateString();
+    const date=new Date().toISOString();
     var ans;
     if(type=='Private'){
         const query=await pool.query('select * from hospital where pr=true and available=true',async(error,results)=>{
@@ -115,11 +115,12 @@ app.post('/',async(req,res)=>{
                     ans= false;
                 }
                 if(ans){
+                    console.log('f',date)
                     const room_number=results.rows[0].rooms;
                     const query =await pool.query("INSERT INTO PATIENT(name,age,gender,address,disease,contact,arrival_date,room_number) VALUES($1,$2,$3,$4,$5,$6,$7,$8)  RETURNING *",[name,age,gender,address,disease,contact,date,room_number],async(error,results)=>{
                         if(error){
-                            console.log(error.details);
-                            res.send(error.details);
+                            console.log(error,'hh');
+                            res.send(error);
                         }
                         else{
                             console.log("Added Patient!")
@@ -153,7 +154,7 @@ app.post('/',async(req,res)=>{
 
 app.post("/leave/:id",async(req,res)=>{
     const id=req.params.id;
-    const date=new Date().toLocaleDateString();
+    const date=new Date().toISOString();
     const query=pool.query("UPDATE PATIENT SET departure_date=$1 WHERE patient_id=$2",[date,id],async(error,results)=>{
         if(error){
             console.log(error);
