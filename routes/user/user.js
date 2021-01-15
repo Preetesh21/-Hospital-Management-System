@@ -12,8 +12,8 @@ app.use(cors());
 app.post('/add',async (req,res)=>{
     try{
         
-        const {email,password} = (req.body);
-        const query=await pool.query('INSERT INTO USERS(email,password) VALUES($1,$2) RETURNING *', [(email),(password)],
+        const {name,email,password} = (req.body);
+        const query=await pool.query('INSERT INTO USERS(name,email,password) VALUES($1,$2,$3) RETURNING *', [(name),(email),(password)],
         (error, results) => {
             if (error) {
                 console.log(error);

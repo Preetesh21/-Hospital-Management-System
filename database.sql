@@ -2,7 +2,7 @@ CREATE DATABASE hms;
 \connect hms;
 CREATE TABLE admin(admin_id SERIAL,email VARCHAR(255) NOT NULL,password VARCHAR(255) NOT NULL,primary key(admin_id));
 
-CREATE TABLE users(user_id SERIAL,email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL,primary key(user_id));
+CREATE TABLE users(user_id SERIAL,name VARCHAR(255) NOT NULL,email VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL,primary key(user_id));
 
 CREATE TABLE patient(patient_id SERIAL,name VARCHAR(255) NOT NULL,age INT NOT NULL,gender VARCHAR(10),address VARCHAR(255) NOT NULL,disease VARCHAR(255) NOT NULL,room_number VARCHAR(255) NOT NULL,contact VARCHAR(10) NOT NULL,arrival_date DATE NOT NULL,departure_date DATE,primary key(patient_id));
 

@@ -9,7 +9,7 @@ function UserAdd(props) {
 
   const handleClick=async(e)=>{
       e.preventDefault();
-      const body={email,password};
+      const body={name,email,password};
       console.log(body);
 
     fetch(`http://localhost:5000/user/add`, {
@@ -27,8 +27,6 @@ function UserAdd(props) {
       console.error('Error:', error);
     });
   }
-
-
     return (
         <>
         <Navber />
