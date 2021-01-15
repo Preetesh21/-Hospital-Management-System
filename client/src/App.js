@@ -60,9 +60,10 @@ function App() {
       <Route exact path="/hospital/:room_number" component={HospitalUpdate} />
 
       <Route exact path="/doctor" component = {DoctorHome} />
+      <Route exact path="/doctor/add" component = {DoctorAdd} />
       <Route exact path="/doctor/:id" component = {DoctorGet} />
       <Route exact path="/doctor/find/:key" component = {DoctorFind} />
-      <Route exact path="/doctor/add" component = {DoctorAdd} />
+      
       <Route exact path="/doctor/update/:id" component = {DoctorUpdate} />
 
       

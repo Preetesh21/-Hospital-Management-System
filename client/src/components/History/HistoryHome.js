@@ -39,18 +39,18 @@ function HistoryHome(props) {
                     <p className="text-muted text-center sm-text">Hospital </p>
                     <div className="row d-flex justify-content-between mx-2 px-3 card-strip">
                         <div className="left d-flex flex-column">
-                            <h5 className="mb-1">Time ::10:00 - 11:00 AM</h5>
-                            <p className="text-muted mb-1 sm-text">Date:: </p>
+                            <h5 className="mb-1">Time ::{todo.hr}:00 hrs</h5>
+                            <p className="text-muted mb-1 sm-text">Date::{todo.date} </p>
                         </div>
-                        <div className="right d-flex"> Harum perferendis et officia quo perspiciatis at ipsa nisi ipsam porro voluptate!
+                        <div className="right d-flex"> Harum perferendis et officia quo perspiciatis at ipsa nisi ipsam porro voluptate!{todo.cure}
                             <img style={mystyle} src="https://www.w3schools.com/bootstrap4/img_avatar1.png"></img>
                         </div>
-                        <p>dxfcghjkl</p>
+                        <p>{todo.disease}</p>
                     </div>
                     <div className="row d-flex justify-content-between mx-2 px-3 card-strip">
                         <div className="left d-flex flex-column">
-                            <h5 className="mb-1">Patient ID::</h5>
-                            <h5 className="mb-1">Doctor ID::</h5>
+                            <h5 className="mb-1">Patient ID::{todo.patient_id}</h5>
+                            <h5 className="mb-1">Doctor ID::{todo.doctor_id}</h5>
                         </div>
                         
                     </div>
