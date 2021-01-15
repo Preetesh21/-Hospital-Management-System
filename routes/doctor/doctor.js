@@ -37,8 +37,9 @@ app.post('/',async (req,res)=>{
 app.post('/update/:id',async (req,res)=>{
     try{
         const {id} = (req.params);
+        console.log(req.body);
         const body = req.body.available;
-        console.log(body,id);
+        console.log('ef',body,id);
         const query=await pool.query('UPDATE DOCTOR SET available =($1) WHERE doctor_id=($2) RETURNING *', [body,id],
         (error, results) => {
             if(error){

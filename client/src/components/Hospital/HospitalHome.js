@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
+import {Link} from 'react-router-dom';
 
 const HospitalHome = () => {
   const [todos, setTodos] = useState([]);
@@ -15,7 +16,6 @@ const HospitalHome = () => {
       console.error(err.message);
     }
   };
-console.log(todos);
   useEffect(() => {
     getTodos();
   }, []);
@@ -40,6 +40,8 @@ console.log(todos);
                   {todo.available.toString()}
               </td>
               <td>{todo.pr.toString()}</td>
+              <td><Link to={{
+                  pathname: `/hospital/${todo.rooms}`}}><button className="btn btn-primary" >Check us </button></Link></td>
             </tr>
           ))}
         </tbody>

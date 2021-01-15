@@ -10,16 +10,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
-
-app.get('/hospital',async (req,res) =>{
-    try{
-        const query=await pool.query("SELECT * FROM HOSPITAL;");
-        res.json(query.rows);
-    }
-    catch(err){
-        console.err(err.message);
-    }
-})
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // Setting up a route
 app.use('/admin', require('./routes/admin/admin'));

@@ -1,7 +1,7 @@
 import React,{Fragment,useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
-
+import {Link} from 'react-router-dom';
 
 function DoctorGet(props) {
     //console.log(props.match.params,props.match.params.id)
@@ -47,6 +47,8 @@ function DoctorGet(props) {
         <p className="card-text">Age:{todo.age}</p>
         <p className="card-text">Tenure:{todo.tenure}</p>
         <p className="card-text">Available:{todo.available.toString()}</p></b>
+        <Link to={{
+                  pathname: `/doctor/update/${todo.doctor_id}`}}>Update </Link>
       </div>
     </div>
   </div>
