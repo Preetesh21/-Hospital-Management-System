@@ -40,7 +40,7 @@ class Footer extends Component {
             <> 
 			<footer>
         <div className=" bg-dark text-white">
-        <div className="container">
+        <div className="container" style={{textAlign:"left"}}>
 		  <div className="row">
 			<div className="col-md-4 footer-box ">
             <p id="contact"><b>OUR MOTO</b></p>
@@ -54,6 +54,7 @@ class Footer extends Component {
 			<p>Link</p>
 			<input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" style={{width:"50%"}} name="keyword" placeholder="keyword" />
 				<button className="btn btn-primary" onClick={this.handleClick}>Search</button>
+
 				{(localStorage.getItem("admin")==='f'&& localStorage.getItem("id")!=='' )?
 				<>
 				<p>Link</p>

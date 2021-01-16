@@ -37,6 +37,9 @@ import HistoryGet from './components/History/HistoryGet';
 import HistoryAdd from './components/History/HistoryAdd';
 import HistoryPatient from './components/History/HistoryPatient';
 
+import ProtectedRoute from './components/ProtectedRoute';
+import Unauthorized from './components/Unauthorized';
+
 import Logout from './components/Logout/logout';
 
 function App() {
@@ -51,35 +54,37 @@ function App() {
       <Route exact path="/admin" component = {AdminLogin}/>
 
       <Route exact path="/user" component = {UserLogin}/>
-      <Route exact path="/user/all" component = {UserAll}/>
+      <ProtectedRoute exact path="/user/all" component = {UserAll}/>
       <Route exact path="/user/add" component = {UserAdd}/>
 
-      <Route exact path="/patient" component={PatientHome} />
+      <ProtectedRoute exact path="/patient" component={PatientHome} />
       <Route exact path="/patient/add" component={PatientAdd} />
       <Route exact path="/patient/:id" component={PatientGet} />  
       <Route exact path="/patient/leave/:id" component={PatinetLeave} />
 
       <Route exact path="/hospital" component={HospitalHome} />
-      <Route exact path="/hospital/:room_number" component={HospitalUpdate} />
+      <ProtectedRoute exact path="/hospital/:room_number" component={HospitalUpdate} />
 
       <Route exact path="/doctor" component = {DoctorHome} />
-      <Route exact path="/doctor/add" component = {DoctorAdd} />
+      <ProtectedRoute exact path="/doctor/add" component = {DoctorAdd} />
       <Route exact path="/doctor/:id" component = {DoctorGet} />
       <Route exact path="/doctor/find/:key" component = {DoctorFind} />
-      <Route exact path="/doctor/update/:id" component = {DoctorUpdate} />
+      <ProtectedRoute exact path="/doctor/update/:id" component = {DoctorUpdate} />
 
       
-      <Route exact path="/appointments" component = {AppointmentsHome} />
+      <ProtectedRoute exact path="/appointments" component = {AppointmentsHome} />
       <Route exact path="/appointments/one/:id&:date&:hr" component = {AppointmentsOne} />
       <Route exact path="/appointments/:id" component = {AppointmentsGet} />
-      <Route exact path="/appointments/doctor/:id" component = {DoctorAppointments} />
+      <ProtectedRoute exact path="/appointments/doctor/:id" component = {DoctorAppointments} />
       <Route exact path="/appointments/add/:id" component = {AppointmentsAdd} />
       
       
-      <Route exact path="/History/" component = {HistoryHome} />
+      <ProtectedRoute exact path="/History/" component = {HistoryHome} />
       <Route exact path="/History/:id&:doctor_id&:date&:hr" component = {HistoryGet} />
       <Route exact path="/History/patient/:id" component = {HistoryPatient} />
-      <Route exact path="/History/add/:id" component = {HistoryAdd} />
+      <ProtectedRoute exact path="/History/add/:id" component = {HistoryAdd} />
+
+      <Route exact path='/unauthorized' component={Unauthorized} />
       
 </Switch>
     </Router>

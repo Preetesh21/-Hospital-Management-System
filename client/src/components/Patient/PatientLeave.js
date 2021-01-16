@@ -1,10 +1,19 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import {Redirect} from 'react-router-dom';
   
+
   function PatientLeave(props) {
     const id=props.match.params.id;
-  
+    if(id!==localStorage.getItem("id"))
+    {
+      return <Redirect to={
+        {
+          pathname: '/unauthorized',
+        }
+      }/>
+    }
     const handleUpdate=async (e)=>{
         e.preventDefault();
         //const body="true";

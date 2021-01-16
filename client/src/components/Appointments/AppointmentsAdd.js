@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
+import {Redirect} from 'react-router-dom';
 
 function AppointmentsAdd(props) {
 
@@ -8,6 +9,14 @@ function AppointmentsAdd(props) {
     const [doctor_id, setDoctor_id] = useState("");
     const [date, setDate] = useState("");
     const [hr, sethr] = useState("");
+    if(patient_id!==localStorage.getItem("id"))
+    {
+      return <Redirect to={
+        {
+          pathname: '/unauthorized',
+        }
+      }/>
+    }
 
     const handleClick=async(e)=>{
         e.preventDefault();

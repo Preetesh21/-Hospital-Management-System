@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 import './Appointments.css';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 
 function AppointmentsOne(props) {
     //console.log(props.match.params,props.match.params.id)
@@ -15,6 +15,14 @@ function AppointmentsOne(props) {
     const [todos, setTodos] = useState([]);
     const getTodos = async () => {
         try {
+            if(id!==localStorage.getItem("id"))
+    {
+      return <Redirect to={
+        {
+          pathname: '/unauthorized',
+        }
+      }/>
+    }
           const response = await fetch(`http://localhost:5000/appointments/one/${id}&${date}&${hr}`);
           const jsonData = await response.json();
     

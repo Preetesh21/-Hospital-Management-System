@@ -1,7 +1,7 @@
 import React,{Fragment,useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 
 function HistoryGet(props) {
     const id=props.match.params.id;
@@ -9,6 +9,15 @@ function HistoryGet(props) {
     const [todos, setTodos] = useState([]);
     const getTodos = async () => {
         try {
+            if(id!==localStorage.getItem("id"))
+            {
+          return <Redirect to={
+            {
+              pathname: '/unauthorized',
+            }
+          }/>
+            }
+        
           const response = await fetch(`http://localhost:5000/history/patient/${id}`);
           const jsonData = await response.json();
     
