@@ -5,9 +5,13 @@ class Footer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {value: ''};
-	
+		this.state = {value2: ''};
+
 		this.handleChange = this.handleChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
+
+		this.handleChange2 = this.handleChange2.bind(this);
+		this.handleClick2 = this.handleClick2.bind(this);
 	  }
 	
 	  handleChange(event) {
@@ -20,6 +24,15 @@ class Footer extends Component {
 		this.props.history.push(path);
 	  }
 
+	  handleChange2(event) {
+		this.setState({value2: event.target.value});
+	  }
+	  handleClick2(e){
+		e.preventDefault();
+		let path=`/patient/${this.state.value2}`;
+		console.log(path)
+		this.props.history.push(path);
+	  }
 
     render() { 
         return (  
@@ -40,8 +53,8 @@ class Footer extends Component {
 			<input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" name="keyword" placeholder="keyword" />
 				<button className="btn btn-primary" onClick={this.handleClick}>Search</button>
 			
-                <p>bnj
-                </p>
+			<input type="text" value={this.state.value2} onChange={this.handleChange2} className="form-control" name="keyword" placeholder="keyword" />
+				<button className="btn btn-primary" onClick={this.handleClick2}>Search</button>
 			</div>
 			<div className="col-md-4 footer-box">
 			  <p id="contact"><b>OUR ADDRESS</b></p>

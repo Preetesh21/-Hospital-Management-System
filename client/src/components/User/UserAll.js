@@ -19,10 +19,7 @@ function UserAll() {
       useEffect(() => {
         getTodos();
       }, []);
-        const mystyle = { width: "60px",
-        height: "60px",
-        borderRadius: "50%",
-        cursor: "pointer"};
+        
       return (
           <>
           <Navber />

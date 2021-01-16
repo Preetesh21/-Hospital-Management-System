@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import classnames from 'classnames'
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Auth from '../Auth/Auth';
 
 export class Navber extends Component {
     constructor(props) {
@@ -30,6 +31,7 @@ export class Navber extends Component {
     
         const currentScrollPos = window.pageYOffset;
         const visible = prevScrollpos > currentScrollPos;
+        
     
         this.setState({
           prevScrollpos: currentScrollPos,
@@ -37,6 +39,7 @@ export class Navber extends Component {
         });
       };
     render() {
+      
         return (
             <div>
               <Navbar className={classnames("navbar", {
@@ -50,12 +53,15 @@ export class Navber extends Component {
                     <Nav.Link className="text-white" href="/about">About</Nav.Link>
                     <Nav.Link className="text-white" href="/hospital">Hospital</Nav.Link>
                     <Nav.Link className="text-white" href="/doctor">Our Doctors</Nav.Link>
-                    <NavDropdown title="Login" id="basic-nav-dropdown" className="mr-5">
-                        <NavDropdown.Item href="/patient/login">Patient Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/doctors/login">Doctor Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/employee/login">Employee Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/administrator/login">Admin Login</NavDropdown.Item>
+                   {(Auth.getid()===''&&Auth.getadmin()==='')?
+                    <NavDropdown className="text-white" title="Login" id="basic-nav-dropdown" className="mr-5">
+                        <NavDropdown.Item href="/user">User Login</NavDropdown.Item>
+                        <NavDropdown.Item href="/admin">Admin Login</NavDropdown.Item>
                     </NavDropdown>
+                        :
+                      <Nav.Link className="text-white" href="/">Logout</Nav.Link>
+                    
+                   }
                     </Nav>
                     
                 </Navbar.Collapse>
