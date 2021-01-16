@@ -4,7 +4,7 @@ import '../unauthorized.scss';
 
 const Unauthorized = () => {
   return (
-    <div className='container'>
+    <div className='container' id="container">
       <div class="gandalf">
         <div class="fireball"></div>
         <div class="skirt"></div>
