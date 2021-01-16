@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import Navber from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 

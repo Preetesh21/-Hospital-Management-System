@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 
@@ -15,7 +15,8 @@ function PatientAdd(props) {
 
     const handleClick2=async(e)=>{
         e.preventDefault();
-        
+        localStorage.setItem("admin", "f");
+        localStorage.setItem("id", patient_id);
         const path=`/patient/${patient_id}`;
         console.log(path)
         props.history.push(path);
@@ -35,7 +36,7 @@ function PatientAdd(props) {
       .then(result => {
         console.log('Success:', result);
         localStorage.setItem("admin", "f");
-        localStorage.setItem("id", result[0].admin_id);
+        localStorage.setItem("id", result[0].patient_id);
         let path=`/patient/${result.rows[0].patient_id}`;
 		props.history.push(path);
       })

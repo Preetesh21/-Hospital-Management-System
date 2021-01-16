@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 
@@ -37,8 +37,6 @@ function DoctorUpdate(props) {
 		console.log(path)
 		props.history.push(path);
       }
-
-
     return (
         <>
         <Navber />

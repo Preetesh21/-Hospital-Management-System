@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Auth from '../Auth/Auth';
+import {Link} from 'react-router-dom';
 
 export class Navber extends Component {
     constructor(props) {
@@ -56,17 +57,20 @@ export class Navber extends Component {
                     {(localStorage.getItem("admin")==='t')?
                     <NavDropdown className="text-white" title="Records" id="basic-nav-dropdown" className="mr-5">
                       <Nav.Link  href="/patient">Patients</Nav.Link>
-                      <Nav.Link  href="/history">Appointments</Nav.Link>
-                      <Nav.Link  href="/patient">History</Nav.Link>
+                      <Nav.Link  href="/appointments">Appointments</Nav.Link>
+                      <Nav.Link  href="/history">History</Nav.Link>
                     </NavDropdown>
                       :
                       <Nav.Link ></Nav.Link>
                     }
-                    {(localStorage.getItem("admin")==='f'&& localStorage.getItem("id")!=='' )?
+                    {(localStorage.getItem("admin")==='f' )?
                     <NavDropdown className="text-white" title="Patient-Records" id="basic-nav-dropdown" className="mr-5">
-                      <Nav.Link  href="/patient/${localStorage.getItem('id')}">Patients</Nav.Link>
-                      <Nav.Link  href="/history/patient/${localStorage.getItem('id')}">Appointments</Nav.Link>
-                      <Nav.Link  href="/patient/patient/${localStorage.getItem('id')}">History</Nav.Link>
+                    <Link to={{
+                  pathname: `/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Patient </button></Link>
+                      <Link to={{
+                  pathname: `/history/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >History </button></Link>
+				<Link to={{
+                  pathname: `/appointments/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Appointments </button></Link>
                     </NavDropdown>
                       :
                       <Nav.Link ></Nav.Link>

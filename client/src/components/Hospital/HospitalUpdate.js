@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
   
@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
   
     const handleUpdate=async (e)=>{
         e.preventDefault();
-        const body="true";
+        //const body="true";
         console.log(id)
         const response = await fetch(`http://localhost:5000/hospital/${id}`, {
             method: "POST",

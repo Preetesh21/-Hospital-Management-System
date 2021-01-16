@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 
@@ -34,7 +34,8 @@ function PatientAdd(props) {
 
     return (
         <>
-        <h1>fyvgbuhinjm</h1>
+        <Navber />
+        <h1>History conduction form</h1>
         <div className="container">
          <form>
         <div className="form-group">
@@ -65,6 +66,7 @@ function PatientAdd(props) {
         <button type="submit" onClick={handleClick} className="btn btn-primary">Submit</button>
         </form>   
         </div>
+        <Footer />
         </>
     )
 }

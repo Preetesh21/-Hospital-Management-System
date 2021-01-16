@@ -24,11 +24,6 @@ function PatientGet(props) {
       useEffect(() => {
         getTodos();
       }, []);
-
-      const mystyle = { width: "60px",
-      height: "60px",
-      borderRadius: "50%",
-      cursor: "pointer"};
     return (
         <>
         <Navber />
@@ -50,8 +45,18 @@ function PatientGet(props) {
         <p className="card-text">Arrival Date:{todo.arrival_date.toString().slice(0,10)}</p>
         <p className="card-text">Departure Date:{todo.departure_date?todo.departure_date.toString().slice(0,10):"None"}</p>
         <div className="fa fa-phone"></div>{todo.contact}</b>
+        {!todo.departure_date?
+        <div className="row">
         <Link to={{
-                  pathname: `/patient/leave/${todo.patient_id}`}}><button className="btn btn-danger m-1" >Wanna Leave </button></Link>
+                  pathname: `/patient/leave/${todo.patient_id}`}}><button className="btn btn-danger m-1" >Wanna Leave </button>
+        </Link>
+        <Link to={{
+                  pathname: `/appointments/add/${todo.patient_id}`}}><button className="btn btn-danger m-1" >Add an appointment</button>
+        </Link>
+        </div>
+                  :
+                  <></>
+        }
       </div>
     </div>
   </div>

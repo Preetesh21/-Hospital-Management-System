@@ -22,7 +22,7 @@ function UserLogin(props) {
     .then(result => {
       console.log('Success:', result);
       localStorage.setItem("admin", "u");
-        localStorage.setItem("id", result[0].user_id);
+      //localStorage.setItem("id", result[0].user_id);
       let path=`/patient/add`;
   props.history.push(path);
     })

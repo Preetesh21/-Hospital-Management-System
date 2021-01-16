@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
@@ -43,7 +43,7 @@ function HistoryHome(props) {
                             <p className="text-muted mb-1 sm-text">Date::{todo.date} </p>
                         </div>
                         <div className="right d-flex"> Harum perferendis et officia quo perspiciatis at ipsa nisi ipsam porro voluptate!{todo.cure}
-                            <img style={mystyle} src="https://www.w3schools.com/bootstrap4/img_avatar1.png"></img>
+                            <img style={mystyle} alt="" src="https://www.w3schools.com/bootstrap4/img_avatar1.png"></img>
                         </div>
                         <p>{todo.disease}</p>
                     </div>

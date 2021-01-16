@@ -1,7 +1,8 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 import './Appointments.css';
+import {Link} from 'react-router-dom';
 
 function AppointmentsOne(props) {
     //console.log(props.match.params,props.match.params.id)
@@ -62,9 +63,14 @@ function AppointmentsOne(props) {
                     <h5 className="mb-1">DURATION</h5> <span className="time">1 hr</span>
                 </div>
                 <div className="right d-flex">
-                    <p className="mb-0 price"><strong className="text-muted">$80.00</strong></p>
-                    {/* <Link to={{
-                  pathname: `/appointments/one/${todo.patient_id}&${todo.date}&${todo.hr}`}}> Contact us </Link> */}
+                    <p className="mb-0 price mr-2"><strong className="text-muted">$80.00</strong></p>
+
+                    {(localStorage.getItem("admin")==='t' )?
+                    <Link to={{
+                  pathname: `/history/add/${todo.doctor_id}`}}><button className="btn btn-info"> Conduct </button></Link>
+                  :
+                  <></>
+                    }
                 </div>
             </div>
         </div>

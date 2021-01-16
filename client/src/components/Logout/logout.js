@@ -1,5 +1,5 @@
 import Auth from '../Auth/Auth';
-import React, { Fragment, useEffect, useState } from "react";
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
   
@@ -12,7 +12,12 @@ import Modal from 'react-bootstrap/Modal';
         localStorage.setItem("id", "");
         props.history.push('/');
         }
-
+        const handleClose=(e)=>{
+          e.preventDefault();
+      let path=`/`;
+      console.log(path)
+      props.history.push(path);
+      }
     return (
       <>
       <Modal
@@ -34,6 +39,7 @@ import Modal from 'react-bootstrap/Modal';
         </Modal.Body>
         <Modal.Footer>
         <Button onClick={handleUpdate}>Logout</Button>
+        <Button onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
       </>

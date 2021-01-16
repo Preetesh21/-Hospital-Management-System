@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 
@@ -45,6 +45,10 @@ function DoctorAdd(props) {
         <div className="form-group">
             <label >Age</label>
             <input type="number" onChange={e => setAge(e.target.value)} className="form-control" placeholder="Enter here" />
+        </div>
+        <div className="form-group">
+            <label >Gender</label>
+            <input type="text" onChange={e => setGender(e.target.value)} className="form-control" placeholder="Enter here" />
         </div>
         <div className="form-group">
             <label >Tenure</label>

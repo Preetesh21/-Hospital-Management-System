@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 
@@ -27,10 +27,7 @@ function DoctorFind(props) {
         getTodos();
       }, [key]);
 
-      const mystyle = { width: "60px",
-      height: "60px",
-      borderRadius: "50%",
-      cursor: "pointer"};
+     
     return (
         <>
         <Navber />

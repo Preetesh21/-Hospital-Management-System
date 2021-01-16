@@ -1,4 +1,4 @@
-import React,{Fragment,useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
 import {Link} from 'react-router-dom';
@@ -25,10 +25,7 @@ function DoctorGet(props) {
         getTodos();
       }, []);
 
-      const mystyle = { width: "60px",
-      height: "60px",
-      borderRadius: "50%",
-      cursor: "pointer"};
+      
     return (
         <>
         <Navber />
@@ -47,8 +44,12 @@ function DoctorGet(props) {
         <p className="card-text">Age:{todo.age}</p>
         <p className="card-text">Tenure:{todo.tenure}</p>
         <p className="card-text">Available:{todo.available.toString()}</p></b>
+        {(localStorage.getItem("admin"))==='t'?
         <Link to={{
                   pathname: `/doctor/update/${todo.doctor_id}`}}>Update </Link>
+                  :
+                  <></>
+        }
       </div>
     </div>
   </div>

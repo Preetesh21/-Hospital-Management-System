@@ -48,7 +48,7 @@ function HistoryGet(props) {
                             <h5 className="mb-1">Cure ::{todo.cure} </h5>
                         </div>
                         <div className="right d-flex">
-                            <img style={mystyle} src="https://www.rasmussen.edu/-/media/images/blogs/school-of-health-sciences/2020/types-of-preventive-care-s.jpg"></img>
+                            <img style={mystyle} alt="" src="https://www.rasmussen.edu/-/media/images/blogs/school-of-health-sciences/2020/types-of-preventive-care-s.jpg"></img>
                         </div>
                         
                     </div>
