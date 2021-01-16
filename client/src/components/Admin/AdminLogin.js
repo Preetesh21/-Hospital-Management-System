@@ -1,4 +1,4 @@
-
+import Auth from '../Auth/Auth';
 import React,{Fragment,useState,useEffect} from 'react'
 import Footer from '../Footer/Footer';
 import Navber from '../Navbar/Navbar';
@@ -20,7 +20,12 @@ function AdminLogin(props) {
     })
     .then(response => response.json())
     .then(result => {
-      console.log('Success:', result);
+      console.log('Success:', result[0].admin_id);
+      Auth.setadmin('t');
+      Auth.setID(result[0].admin_id);
+      localStorage.setItem("admin", "t");
+      localStorage.setItem("id", result[0].admin_id);
+      //console.log(Auth.getadmin(),Auth.getID());
       let path=`/`;
   props.history.push(path);
     })

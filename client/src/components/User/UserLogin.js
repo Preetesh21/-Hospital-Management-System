@@ -21,6 +21,8 @@ function UserLogin(props) {
     .then(response => response.json())
     .then(result => {
       console.log('Success:', result);
+      localStorage.setItem("admin", "u");
+        localStorage.setItem("id", result[0].user_id);
       let path=`/patient/add`;
   props.history.push(path);
     })

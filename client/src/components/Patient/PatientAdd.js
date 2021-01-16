@@ -11,6 +11,15 @@ function PatientAdd(props) {
     const [contact, setContact] = useState("");
     const [disease, setDisease] = useState("");
     const [type, setType] = useState("");
+    const [patient_id,setPat]=useState("");
+
+    const handleClick2=async(e)=>{
+        e.preventDefault();
+        
+        const path=`/patient/${patient_id}`;
+        console.log(path)
+        props.history.push(path);
+    }
 
     const handleClick=async(e)=>{
         e.preventDefault();
@@ -25,6 +34,8 @@ function PatientAdd(props) {
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
+        localStorage.setItem("admin", "f");
+        localStorage.setItem("id", result[0].admin_id);
         let path=`/patient/${result.rows[0].patient_id}`;
 		props.history.push(path);
       })
@@ -38,7 +49,15 @@ function PatientAdd(props) {
         <Navber />
         
         <div className="container">
-        <h1>Patient Form</h1>
+        <h1>Existing Patient Form</h1>
+         <form>
+        <div className="form-group">
+            <label >Patient ID</label>
+            <input type="number"onChange={e => setPat(e.target.value)} className="form-control" placeholder="Enter here" />
+        </div>
+        <button type="submit" onClick={handleClick2} className="btn btn-primary">Submit</button>
+        </form>
+        <h1>NEW Patient Form</h1>
          <form>
         <div className="form-group">
             <label >Name</label>

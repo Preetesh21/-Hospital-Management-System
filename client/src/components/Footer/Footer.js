@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Footer extends Component {
 	constructor(props) {
@@ -50,11 +51,18 @@ class Footer extends Component {
 			</div>
 			<div className="col-md-4 footer-box">
             <p id="contact"><b>OUR LINKS</b></p>
-			<input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" name="keyword" placeholder="keyword" />
+			<p>Link</p>
+			<input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" style={{width:"50%"}} name="keyword" placeholder="keyword" />
 				<button className="btn btn-primary" onClick={this.handleClick}>Search</button>
-			
-			<input type="text" value={this.state.value2} onChange={this.handleChange2} className="form-control" name="keyword" placeholder="keyword" />
-				<button className="btn btn-primary" onClick={this.handleClick2}>Search</button>
+				{(localStorage.getItem("admin")==='u'&& localStorage.getItem("id")!=='' )?
+				<>
+				<p>Link</p>
+				<Link to={{
+                  pathname: `/patient/${localStorage.getItem("id")}`}}><button className="btn btn-danger m-1" >Ur Profile </button></Link>
+				</>
+				:
+				<p>vgyuhij</p>
+				}
 			</div>
 			<div className="col-md-4 footer-box">
 			  <p id="contact"><b>OUR ADDRESS</b></p>

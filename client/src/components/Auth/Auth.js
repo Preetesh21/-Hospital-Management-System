@@ -10,13 +10,15 @@ var Auth = (function() {
         return id;    // Or pull this from cookie/localStorage
     };
 
-    var setID = function(id) {
-      id = id;     
+    var setID = function(ids) {
+        console.log('hello',ids)
+        id = ids;     
       // Also set this in cookie/localStorage
     };
   
-    var setadmin = function(admin) {
-        admin = admin;     
+    var setadmin = function(admins) {
+        console.log('hello',admins)
+        admin = admins;     
         // Also set this in cookie/localStorage
       };
 

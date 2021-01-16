@@ -39,7 +39,7 @@ export class Navber extends Component {
         });
       };
     render() {
-      
+      console.log(Auth.getadmin(),Auth.getid(),localStorage.getItem("admin"),localStorage.getItem("id"),'h')
         return (
             <div>
               <Navbar className={classnames("navbar", {
@@ -53,13 +53,33 @@ export class Navber extends Component {
                     <Nav.Link className="text-white" href="/about">About</Nav.Link>
                     <Nav.Link className="text-white" href="/hospital">Hospital</Nav.Link>
                     <Nav.Link className="text-white" href="/doctor">Our Doctors</Nav.Link>
-                   {(Auth.getid()===''&&Auth.getadmin()==='')?
+                    {(localStorage.getItem("admin")==='t')?
+                    <NavDropdown className="text-white" title="Records" id="basic-nav-dropdown" className="mr-5">
+                      <Nav.Link  href="/patient">Patients</Nav.Link>
+                      <Nav.Link  href="/history">Appointments</Nav.Link>
+                      <Nav.Link  href="/patient">History</Nav.Link>
+                    </NavDropdown>
+                      :
+                      <Nav.Link ></Nav.Link>
+                    }
+                    {(localStorage.getItem("admin")==='f'&& localStorage.getItem("id")!=='' )?
+                    <NavDropdown className="text-white" title="Patient-Records" id="basic-nav-dropdown" className="mr-5">
+                      <Nav.Link  href="/patient/${localStorage.getItem('id')}">Patients</Nav.Link>
+                      <Nav.Link  href="/history/patient/${localStorage.getItem('id')}">Appointments</Nav.Link>
+                      <Nav.Link  href="/patient/patient/${localStorage.getItem('id')}">History</Nav.Link>
+                    </NavDropdown>
+                      :
+                      <Nav.Link ></Nav.Link>
+                    }
+
+
+                   {(localStorage.getItem("admin")===''&&localStorage.getItem("id")==='')?
                     <NavDropdown className="text-white" title="Login" id="basic-nav-dropdown" className="mr-5">
                         <NavDropdown.Item href="/user">User Login</NavDropdown.Item>
                         <NavDropdown.Item href="/admin">Admin Login</NavDropdown.Item>
                     </NavDropdown>
                         :
-                      <Nav.Link className="text-white" href="/">Logout</Nav.Link>
+                      <Nav.Link className="text-white" href="/logout">Logout</Nav.Link>
                     
                    }
                     </Nav>
