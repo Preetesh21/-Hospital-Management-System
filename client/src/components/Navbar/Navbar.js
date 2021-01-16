@@ -54,38 +54,41 @@ export class Navber extends Component {
                     <Nav.Link className="text-white" href="/about">About</Nav.Link>
                     <Nav.Link className="text-white" href="/hospital">Hospital</Nav.Link>
                     <Nav.Link className="text-white" href="/doctor">Our Doctors</Nav.Link>
+
                     {(localStorage.getItem("admin")==='t')?
                     <NavDropdown className="text-white" title="Records" id="basic-nav-dropdown" className="mr-5">
                       <Nav.Link  href="/patient">Patients</Nav.Link>
+                      <Nav.Link hre="/user/all">Users</Nav.Link>
                       <Nav.Link  href="/appointments">Appointments</Nav.Link>
                       <Nav.Link  href="/history">History</Nav.Link>
+                      <Nav.Link href="doctor/add">Add Doctor</Nav.Link>
                     </NavDropdown>
                       :
                       <Nav.Link ></Nav.Link>
                     }
+
                     {(localStorage.getItem("admin")==='f' )?
                     <NavDropdown className="text-white" title="Patient-Records" id="basic-nav-dropdown" className="mr-5">
                     <Link to={{
-                  pathname: `/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Patient </button></Link>
+                        pathname: `/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Patient </button></Link>
                       <Link to={{
-                  pathname: `/history/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >History </button></Link>
-				<Link to={{
-                  pathname: `/appointments/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Appointments </button></Link>
+                        pathname: `/history/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >History </button></Link>
+            				<Link to={{
+                        pathname: `/appointments/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Appointments </button></Link>
                     </NavDropdown>
                       :
                       <Nav.Link ></Nav.Link>
                     }
 
-
-                   {(localStorage.getItem("admin")===''&&localStorage.getItem("id")==='')?
-                    <NavDropdown className="text-white" title="Login" id="basic-nav-dropdown" className="mr-5">
-                        <NavDropdown.Item href="/user">User Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/admin">Admin Login</NavDropdown.Item>
-                    </NavDropdown>
-                        :
-                      <Nav.Link className="text-white" href="/logout">Logout</Nav.Link>
-                    
-                   }
+                    {(localStorage.getItem("admin")===''&&localStorage.getItem("id")==='')?
+                      <NavDropdown className="text-white" title="Login" id="basic-nav-dropdown" className="mr-5">
+                          <NavDropdown.Item href="/user">User Login</NavDropdown.Item>
+                          <NavDropdown.Item href="/admin">Admin Login</NavDropdown.Item>
+                      </NavDropdown>
+                          :
+                        <Nav.Link className="text-white" href="/logout">Logout</Nav.Link>
+                      
+                    }
                     </Nav>
                     
                 </Navbar.Collapse>

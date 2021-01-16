@@ -40,8 +40,12 @@ const HospitalHome = () => {
                   {todo.available.toString()}
               </td>
               <td>{todo.pr.toString()}</td>
+              {(localStorage.getItem("admin")==='t')?
               <td><Link to={{
                   pathname: `/hospital/${todo.rooms}`}}><button className="btn btn-primary" >Check us </button></Link></td>
+                  :
+                  <></>
+              }
             </tr>
           ))}
         </tbody>
