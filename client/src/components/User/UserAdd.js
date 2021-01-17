@@ -32,7 +32,7 @@ function UserAdd(props) {
         <Navber />
         <div className="container">
         <h1>User sign up form</h1>
-            <form>
+            <form style={{height:"50vh"}}>
             <div className="form-group">
     <label for="exampleInputName">Name</label>
     <input type="text" onChange={e => setName(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" />

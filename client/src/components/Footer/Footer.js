@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 import {Link} from 'react-router-dom';
-
 class Footer extends Component {
 	constructor(props) {
 		super(props);
@@ -38,7 +37,7 @@ class Footer extends Component {
     render() { 
         return (  
             <> 
-			<footer>
+			<footer  class="page-footer mt-auto">
         <div className=" bg-dark text-white">
         <div className="container" style={{textAlign:"left"}}>
 		  <div className="row">
@@ -53,7 +52,7 @@ class Footer extends Component {
             <p id="contact"><b>OUR LINKS</b></p>
 			<p>Link</p>
 			<input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" style={{width:"50%"}} name="keyword" placeholder="keyword" />
-				<button className="btn btn-primary" onClick={this.handleClick}>Search</button>
+				<button className="btn btn-primary mt-1" onClick={this.handleClick}>Search</button>
 
 				{(localStorage.getItem("admin")==='f'&& localStorage.getItem("id")!=='' )?
 				<>
@@ -62,7 +61,7 @@ class Footer extends Component {
                   pathname: `/patient/${localStorage.getItem("id")}`}}><button className="btn btn-danger m-1" >Ur Profile </button></Link>
 				</>
 				:
-				<p>vgyuhij</p>
+				<p>Links</p>
 				}
 			</div>
 			<div className="col-md-4 footer-box">
@@ -72,7 +71,7 @@ class Footer extends Component {
 			  <p><i className="fa fa-envelope-o"></i> verma.preetesh21@gmail.com</p>
 			</div>
 			<div className="col-md-6 ">
-			  <p className="copyright">Copyright © 2020. All rights reserved | Designed by </p>
+			  <p className="copyright">Copyright © 2020. All rights reserved | Created for <i class="fa fa-plus-square" aria-hidden="true"></i></p>
 			</div>
 		  </div>
 		  </div>

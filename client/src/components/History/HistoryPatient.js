@@ -41,8 +41,10 @@ function HistoryGet(props) {
         <>
         <Navber />
         <div className="container">
+        <h1 className="text-center">History</h1>
         <div className="container-fluid px-1 py-5 mx-auto">
             <div className="row d-flex justify-content-center">
+           
                 <div className="card-deck">
                 {todos.map((todo,index) => (
                 <div className="card" id="card" key={index}>

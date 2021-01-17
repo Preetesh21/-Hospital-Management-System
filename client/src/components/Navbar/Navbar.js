@@ -45,20 +45,17 @@ export class Navber extends Component {
             <div>
               <Navbar className={classnames("navbar", {
                     "navbar--hidden": !this.state.visible
-                  })} bg="dark" text="white" var expand="lg">
+                  })} bg="dark" text="white" variant="dark" var expand="lg">
                 <Navbar.Brand style={{color:"white"}}>Lifescape Hospital Ltd</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                    <Nav.Link className="text-white" href="/">Home</Nav.Link>
-                    <Nav.Link className="text-white" href="/about">About</Nav.Link>
-                    <Nav.Link className="text-white" href="/hospital">Hospital</Nav.Link>
-                    <Nav.Link className="text-white" href="/doctor">Our Doctors</Nav.Link>
+                    
 
                     {(localStorage.getItem("admin")==='t')?
-                    <NavDropdown className="text-white" title="Records" id="basic-nav-dropdown" className="mr-5">
+                    <NavDropdown className="text-white" title="Records" id="basic-nav-dropdown">
                       <Nav.Link  href="/patient">Patients</Nav.Link>
-                      <Nav.Link hre="/user/all">Users</Nav.Link>
+                      <Nav.Link href="/user/all">Users</Nav.Link>
                       <Nav.Link  href="/appointments">Appointments</Nav.Link>
                       <Nav.Link  href="/history">History</Nav.Link>
                       <Nav.Link href="doctor/add">Add Doctor</Nav.Link>
@@ -68,7 +65,7 @@ export class Navber extends Component {
                     }
 
                     {(localStorage.getItem("admin")==='f' )?
-                    <NavDropdown className="text-white" title="Patient-Records" id="basic-nav-dropdown" className="mr-5">
+                    <NavDropdown className="text-white" title="Patient-Records" id="basic-nav-dropdown">
                     <Link to={{
                         pathname: `/patient/${localStorage.getItem("id")}`}}><button className="btn btn-transparent m-1" >Patient </button></Link>
                       <Link to={{
@@ -81,7 +78,7 @@ export class Navber extends Component {
                     }
 
                     {(localStorage.getItem("admin")===''&&localStorage.getItem("id")==='')?
-                      <NavDropdown className="text-white" title="Login" id="basic-nav-dropdown" className="mr-5">
+                      <NavDropdown className="text-white" title="Login" id="basic-nav-dropdown">
                           <NavDropdown.Item href="/user">User Login</NavDropdown.Item>
                           <NavDropdown.Item href="/admin">Admin Login</NavDropdown.Item>
                       </NavDropdown>
@@ -89,6 +86,10 @@ export class Navber extends Component {
                         <Nav.Link className="text-white" href="/logout">Logout</Nav.Link>
                       
                     }
+                    <Nav.Link className="text-white" href="/">Home</Nav.Link>
+                    <Nav.Link className="text-white" href="/about">About</Nav.Link>
+                    <Nav.Link className="text-white" href="/hospital">Hospital</Nav.Link>
+                    <Nav.Link className="text-white" href="/doctor">Our Doctors</Nav.Link>
                     </Nav>
                     
                 </Navbar.Collapse>

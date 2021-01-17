@@ -44,7 +44,7 @@ function AppointmentsAdd(props) {
         <Navber />
         <div className="container">
         <h1 className="text-center">Add a Doctor</h1>
-         <form>
+         <form style={{height:"50vh"}}>
         <div className="form-group">
             <label >Doctor_id</label>
             <input type="number"onChange={e => setDoctor_id(e.target.value)} className="form-control" placeholder="Enter here" />

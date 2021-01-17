@@ -38,7 +38,8 @@ function AdminLogin(props) {
     <>
     <Navber />
     <div className="container">
-    <form>
+    <h1> Admin Login Form</h1>
+    <form style={{height:"50vh"}}>
       <div className="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" onChange={e => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />

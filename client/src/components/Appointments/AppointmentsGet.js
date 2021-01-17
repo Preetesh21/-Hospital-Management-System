@@ -37,7 +37,7 @@ function AppointmentsGet(props) {
     return (
       <>
       <Navber />
-      <h1 className="text-center">All the Appointments for patient Id-{id}</h1>
+      <h1 className="text-center">All the Appointments for patient </h1>
       <div className="container">
       <div className="card-deck">
       {todos.map((todo,index) => (

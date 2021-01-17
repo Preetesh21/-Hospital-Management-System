@@ -36,7 +36,7 @@ function UserLogin(props) {
     <Navber />
     <div className="container">
     <h1>User Login Form</h1>
-    <form>
+    <form style={{height:"50vh"}}>
       <div className="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" onChange={e => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
