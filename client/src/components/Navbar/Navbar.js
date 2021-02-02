@@ -53,7 +53,7 @@ export class Navber extends Component {
                     
 
                     {(localStorage.getItem("admin")==='t')?
-                    <NavDropdown className="text-white" title="Records" id="basic-nav-dropdown">
+                    <NavDropdown title="Records" id="basic-nav-dropdown">
                       <Nav.Link  href="/patient">Patients</Nav.Link>
                       <Nav.Link href="/user/all">Users</Nav.Link>
                       <Nav.Link  href="/appointments">Appointments</Nav.Link>
