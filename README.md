@@ -19,16 +19,9 @@ leaflet_history | (doctor_id(PK), patient_id(PK),date(PK),hr(PK),disease,cure,ro
 Admins Table contains the details of the admins i.e. the people who control everything.
 
 Hospitals Table contains the room system in the hospital and availability of rooms.
+![homepage](images/hospital.PNG)
 
 Users Table contains the booking agents details such as name, email.
-
-Books is a relation between the users and the tickets table.
-
-Tickets Table contains the details of the tickets being booked by the booking agent for various passengers.
-
-Passengers Table contains the details of the passengers whose tickets are booked such as name, age, gender.
-
-Bookings Table contains the total number of seats that have been booked for a train on a particular date.
 
 ## Validations
 
@@ -53,6 +46,8 @@ Bookings Table contains the total number of seats that have been booked for a tr
         Tenure-Doctors tenure whether permanent or temporary
         Specialization-Field of the doctor
 
+![homepage](images/doctors.PNG)
+
 ## Other Functionalities
 
 - View Appointment
@@ -63,10 +58,14 @@ Bookings Table contains the total number of seats that have been booked for a tr
         - Admins can see the details of all users registered in the system.
 - View All Appointments
         - Admins can also view details of appointments made by all the users.
-- View All Historu
+- View All History
         - Admins can also view full medical history of every patient and each patient can view his only.
-- Search trains of your interest
+- View all the rooms
+        - Admins and users both can see the status of all the rooms at any time.
+- Search appointments of your interest
 ![homepage](images/appointments.PNG)
+
+## Workflow
 
 ## Tech Stack
 
@@ -95,7 +94,7 @@ Bookings Table contains the total number of seats that have been booked for a tr
 - Clone the repository on your system.
 - Run the command in the terminal
 
-```
+```js
 
 npm install
 nodemon index.js
@@ -104,7 +103,7 @@ nodemon index.js
 
 - Then open another terminal and run the commands
 
-```
+```js
 
 npm install
 npm start
@@ -114,6 +113,70 @@ npm start
 - Open the db.js file and configure the settings as per your needs.
 - Visit "http://localhost:3000" on your browser
 - Now you are all set to start!
+
+## API Endpoints Overview
+
+### Admin
+
+`POST admin/add` → Adds an admin to the site
+
+`GET admin/all` → Gives back information of all the admins; Only the authenticated user can see his data
+
+### Appointments
+
+`GET appointments/` → shows a list of all the appointments; Admin View
+
+`GET appointments/one/:id&:date&:hr` → shows the particular appointmets to the admin and the user concerned;Authenticated View
+
+`GET appointments/:id` → shows the list of appointmets to the concerned user;Authenticated View
+
+`GET appointments/doctor/:id` → shows the list of appointmets of the concerned user;Public View
+
+`POST appointments/:id` → Adds an appointment by the user if the doctor is free at the asked time;Authenticated View
+
+### Doctor
+
+`GET doctor/` → shows a list of all the doctor; Public View
+
+`GET doctor/find/:key` → shows the particular doctos with the specific key specialization; Public View
+
+`GET doctor/:id` → shows the details of the concerned doctor;Public View
+
+`POST doctor/update/:id` → updates the details of a doctor; Admin only
+
+`POST doctor/` → Adds a dcotor by the admin if the details are complete: Admin View
+
+### History
+
+`GET history/` → shows a list of all the history; Admin View
+
+`GET history/:id&:doctor_id&:date&:hr` → shows the particular leaflet to the admin and the user concerned;Authenticated View
+
+`GET history/patient/:id` → shows the list of leaflets of the concerned user; Authenticated View
+
+`POST history/:id` → Adds an leaflet into the history of the user by the admin;Admin View
+
+### Hospital
+
+`GET hospital/` → Returns a list of all rooms and their status; Public View.
+
+`POST hospital/:room_number` → Admin can update the status of a room; Must be authenticated
+
+### Patient
+
+`GET patient/` → Provides the list of all the patients;Admin view
+
+`GET patient/:id` → Provides the particular patients detail;Authenticated View
+
+`POST patient/` → adds a patient if details found authenticated; Public View
+
+`POST patient/leave/:id` → updates a patients departure time if details found authenticated; Authenticated View
+
+### User
+
+`GET user/all` → Provides the list of all the users;Admin view
+
+`POST user/add` → adds a user; Public View
 
 ## Directory Structure
 
