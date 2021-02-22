@@ -67,6 +67,8 @@ Users Table contains the booking agents details such as name, email.
 
 ## Workflow
 
+The app involves various kinds of users such as patients,admins,users and doctors.Each of them has different offered by the app as the doctor has the option to view all of his appointments and give a report on a patients health.A user after log in has the ability to become a patient only if the desired type of bed is available.The patient has the power to set up an appointment with the doctor is he is free in the required time and date and also view his entire medical history.Admins have the right to view everything related to users and patients.
+
 ## Tech Stack
 
 - ### Frontend
